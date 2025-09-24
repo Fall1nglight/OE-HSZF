@@ -7,7 +7,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        // Core core = new Core("input.txt");
+        Core core = new Core("input.txt");
         RecursiveExplorer explorer = new RecursiveExplorer("Egyetem\\", 5);
     }
 }

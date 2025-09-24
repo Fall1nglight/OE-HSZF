@@ -20,8 +20,7 @@ public class Core
         _fileName = fileName;
         _sites = new List<Site>();
 
-        ProcessFile();
-        ;
+        ProcessFileNew();
     }
 
     // methods
@@ -76,6 +75,19 @@ public class Core
             // ha véget ér a beolvasás az utolsó teléphelyet is hozzá kell adni
             if (site != null)
                 _sites.Add(site);
+        }
+    }
+
+    private void ProcessFileNew()
+    {
+        string[] sites = File.ReadAllText(_fileName, Encoding.UTF8)
+            .Split('#', StringSplitOptions.RemoveEmptyEntries);
+
+        foreach (string siteData in sites)
+        {
+            Site site = new Site();
+            site.ParseFromText(siteData);
+            _sites.Add(site);
         }
     }
 
