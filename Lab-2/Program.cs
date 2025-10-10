@@ -50,7 +50,6 @@ class Program
                 .ThenByDescending(car => car.AvgPrice);
 
             // 6.
-
             decimal SumPriceOfYear(int year) =>
                 CarFinancial.Analyze(
                     car => car.Year == year ? car.Price : 0,

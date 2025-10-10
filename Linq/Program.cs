@@ -1,6 +1,4 @@
-﻿using System.Xml.Schema;
-
-namespace Linq;
+﻿namespace Linq;
 
 class Program
 {
