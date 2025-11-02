@@ -26,7 +26,8 @@ class Program
                 CityCount = group.Count(),
                 AvgArea = group.Average(city => city.Area),
                 AvgPopulation = group.Average(city => city.Population),
-            });
+            })
+            .ToList();
 
         // kiírás fájlba
         XDocument groupingDoc = new XDocument();
@@ -44,6 +45,22 @@ class Program
         );
 
         groupingDoc.Save("groupings.xml");
+
+        XDocument groupingDoc2 = new XDocument();
+        XElement groupingRoot2 = new XElement("groupings");
+        groupingDoc2.Add(groupingRoot2);
+
+        groupingRoot2.Add(
+            grouping.Select(group => new XElement(
+                "continent",
+                new XAttribute("name", group.Continet),
+                new XAttribute("city_count", group.CityCount),
+                new XAttribute("avg_area", group.AvgArea),
+                new XAttribute("avg_population", group.AvgPopulation)
+            ))
+        );
+
+        groupingDoc2.Save("groupings2.xml");
         #endregion
 
         // adatok további műveletvégzéshez

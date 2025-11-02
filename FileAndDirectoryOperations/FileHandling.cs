@@ -69,5 +69,6 @@ public class FileHandling
 
         // 5.2 StreamWriter, hozzáfűzéssel
         StreamWriter sw1 = new StreamWriter("numbers.txt", true, Encoding.UTF8);
+        sw1.Close();
     }
 }
